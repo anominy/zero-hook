@@ -1,0 +1,7 @@
+{
+    "clangd.arguments": [
+        "--header-insertion=never",
+        "--query-driver=clang-cl",
+        "--compile-commands-dir=./out",
+    ]
+}
