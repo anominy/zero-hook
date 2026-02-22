@@ -33,6 +33,14 @@ DWORD WINAPI ThreadMain(LPVOID lpParam)
     }
     while (hTier0 == NULL);
 
+    HMODULE hD3d9;
+    do
+    {
+        hD3d9 = GetModuleHandleA("d3d9.dll");
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    while (hD3d9 == NULL);
+
     auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("zero-hook\\logs.txt", true);
     auto msg_sink = std::make_shared<zero::dbg::msg_sink_mt>(hTier0);
     std::vector<spdlog::sink_ptr> sinks{file_sink, msg_sink};
@@ -42,6 +50,7 @@ DWORD WINAPI ThreadMain(LPVOID lpParam)
 
     spdlog::info("hClient <-> {:#X}", reinterpret_cast<std::uintptr_t>(hClient));
     spdlog::info("hTier0 <-> {:#X}", reinterpret_cast<std::uintptr_t>(hTier0));
+    spdlog::info("hD3d9 <-> {:#X}", reinterpret_cast<std::uintptr_t>(hD3d9));
 
     FreeLibraryAndExitThread(reinterpret_cast<HMODULE>(lpParam), 0);
 }
