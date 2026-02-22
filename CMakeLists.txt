@@ -16,3 +16,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE WIN32_LEAN_AND_MEAN WIN32_EXT
 
 add_subdirectory(ext/spdlog)
 target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
+
+add_subdirectory(ext/minhook)
+target_link_libraries(${PROJECT_NAME} PRIVATE minhook)
