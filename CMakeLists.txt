@@ -19,3 +19,16 @@ target_link_libraries(${PROJECT_NAME} PRIVATE spdlog::spdlog)
 
 add_subdirectory(ext/minhook)
 target_link_libraries(${PROJECT_NAME} PRIVATE minhook)
+
+add_library(imgui STATIC
+    ext/imgui/imgui.cpp
+    ext/imgui/imgui_draw.cpp
+    ext/imgui/imgui_tables.cpp
+    ext/imgui/imgui_widgets.cpp
+    ext/imgui/backends/imgui_impl_dx9.cpp
+)
+target_include_directories(imgui PUBLIC
+    ext/imgui
+    ext/imgui/backends
+)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui)
