@@ -5,8 +5,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-remove_definitions(-D_UNICODE -DUNICODE -D_MBCS)
-
 add_compile_options(-m32)
 add_link_options(-m32)
 
