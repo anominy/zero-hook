@@ -5,7 +5,7 @@ default:
     just --summary --unsorted
 
 init:
-    cmake -G Ninja -S . -B .\out
+    cmake -DCMAKE_CXX_COMPILER=clang++ -G Ninja -S . -B .\out
 
 clean:
     cmake --build .\out --target clean
